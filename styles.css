@@ -1,47 +1,24 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+body, html {
     margin: 0;
     padding: 0;
-}
-
-h1 {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 20px;
-    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
 }
 
 #map {
-    height: 500px;
     width: 100%;
-    background-image: url('https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg');
-    background-size: cover;
-    background-position: center;
-    margin-top: 20px;
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Fallback in case image doesn't load */
 }
 
 form {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-input, textarea {
-    margin: 5px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
     padding: 10px;
-    width: 200px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
