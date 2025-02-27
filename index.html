@@ -4,92 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>St. John Bosco Campus Events</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            color: navy;
-            text-align: left;
-            padding: 20px;
-            margin-left: 5%;
-        }
-        .event-form {
-            background-color: #f0f0f0;
-            padding: 20px;
-            width: 90%;
-            max-width: 400px;
-            margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-        .event-form label {
-            font-size: 18px;
-            color: navy;
-        }
-        .event-form select,
-        .event-form input {
-            width: 90%;
-            padding: 10px;
-            font-size: 18px;
-            margin: 10px 0;
-            border: 2px solid navy;
-            border-radius: 5px;
-        }
-        .event-form button {
-            width: 90%;
-            padding: 12px;
-            font-size: 20px;
-            background-color: navy;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .event-form button:hover {
-            background-color: darkblue;
-        }
-        .map-container {
-            position: relative;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .map-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .marker {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: navy;
-            border: 2px solid white;
-            border-radius: 50%;
-            cursor: pointer;
-            transform: translate(-50%, -50%);
-            visibility: visible; /* Make them visible by default */
-            z-index: 1;
-        }
-        .event-text {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: white;
-            padding: 5px;
-            font-size: 12px;
-            border: 1px solid navy;
-            border-radius: 5px;
-            white-space: nowrap;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>St. John Bosco Campus Events</h1>
@@ -137,8 +52,6 @@
         <h2>Upcoming Events</h2>
         <ul id="events"></ul>
     </div>
-    <script>
-        //Your Javascript here.
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
