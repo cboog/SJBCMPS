@@ -3,23 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>St. John Bosco Event Map</title>
+    <title>St. John Bosco Campus Events</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
-    <h1>Welcome to the St. John Bosco Event Map!</h1>
-    <div id="map"></div>
-    
-    <h2>Add an Event</h2>
-    <form id="eventForm">
-        <input type="text" id="title" placeholder="Event Title" required />
-        <input type="text" id="location" placeholder="Location" required />
-        <input type="datetime-local" id="time" required />
-        <textarea id="description" placeholder="Event Description"></textarea>
-        <button type="submit">Add Event</button>
-    </form>
 
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- Fixed Map Container -->
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+
+    <!-- Scrollable Content Section -->
+    <div id="content">
+        <h1>Welcome to St. John Bosco Campus Events</h1>
+        <p>Find upcoming events and their locations on campus.</p>
+
+        <!-- Event Form -->
+        <form id="eventForm">
+            <label for="title">Event Title:</label>
+            <input type="text" id="title" required>
+            
+            <label for="location">Location (x,y):</label>
+            <input type="text" id="location" required>
+            
+            <label for="time">Time:</label>
+            <input type="text" id="time" required>
+            
+            <label for="description">Description:</label>
+            <textarea id="description" required></textarea>
+            
+            <button type="submit">Add Event</button>
+        </form>
+
+        <!-- Event List -->
+        <div id="event-list">
+            <h2>Upcoming Events</h2>
+            <ul id="events"></ul>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
