@@ -2,26 +2,34 @@ export default {
     async fetch(request, env) {
         const url = new URL(request.url);
 
-        // Get events from the database
         if (url.pathname === "/events" && request.method === "GET") {
-            const { results } = await env.DB.prepare("SELECT * FROM events").all(); // Fetch all events
-            return new Response(JSON.stringify(results), { headers: { "Content-Type": "application/json" } });
+            const keys = await env.EVENTS.list();
+            const events = [];
+            for (const key of keys.keys) {
+                const event = await env.EVENTS.get(key.name);
+                if (event) {
+                    events.push(JSON.parse(event));
+                }
+            }
+            return new Response(JSON.stringify(events), { headers: { "Content-Type": "application/json" } });
         }
 
-        // Add new event to the database
         if (url.pathname === "/addevent" && request.method === "POST") {
             const data = await request.json();
-            const { title, description, location, time } = data;
-
-            // Insert event into database (storing title, description, location, and time)
-            await env.DB.prepare("INSERT INTO events (title, description, location, time) VALUES (?, ?, ?, ?)")
-                .bind(title, description, location, time)
-                .run();
-
+            const { location, eventName, eventHour, eventMinute, eventPeriod } = data;
+            const eventKey = `${Date.now()}-${location}`; // Unique key
+            const event = {
+                location,
+                eventName,
+                eventHour,
+                eventMinute,
+                eventPeriod,
+                key: eventKey,
+            };
+            await env.EVENTS.put(eventKey, JSON.stringify(event));
             return new Response("Event added", { status: 201 });
         }
 
-        // Return a 404 response if no matching route
         return new Response("Not Found", { status: 404 });
     }
 };
