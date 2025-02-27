@@ -5,140 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>St. John Bosco Campus Events</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            color: navy;
-            text-align: left;
-            padding: 20px;
-            margin-left: 5%;
-        }
-        .event-form {
-            background-color: #f0f0f0;
-            padding: 20px;
-            width: 90%;
-            max-width: 400px;
-            margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-        .event-form label {
-            font-size: 18px;
-            color: navy;
-        }
-        .event-form select,
-        .event-form input {
-            width: 90%;
-            padding: 10px;
-            font-size: 18px;
-            margin: 10px 0;
-            border: 2px solid navy;
-            border-radius: 5px;
-        }
-        .event-form button {
-            width: 90%;
-            padding: 12px;
-            font-size: 20px;
-            background-color: navy;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .event-form button:hover {
-            background-color: darkblue;
-        }
-        .map-container {
-            position: relative;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .map-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .marker {
+        /* ... (Your existing CSS) ... */
+        .marker::after {
+            content: attr(data-url);
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: navy;
-            border: 2px solid white;
-            border-radius: 50%;
-            cursor: pointer;
-            transform: translate(-50%, -50%);
-            visibility: visible; /* Make them visible by default */
-            z-index: 1;
-        }
-        .event-text {
-            position: absolute;
-            top: -30px;
+            top: 25px;
             left: 50%;
             transform: translateX(-50%);
             background-color: white;
             padding: 5px;
-            font-size: 12px;
             border: 1px solid navy;
             border-radius: 5px;
             white-space: nowrap;
+            display: none;
+        }
+        .marker:hover::after {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <h1>St. John Bosco Campus Events</h1>
-
-    <div class="event-form">
-        <label for="event-location">Select Location:</label>
-        <select id="event-location">
-            <option value="marker-1">Track & Field</option>
-            <option value="marker-2">Thunderdome/SJB Gym</option>
-            <option value="marker-3">Baseball Field</option>
-            <option value="marker-4">Weight Room</option>
-            <option value="marker-5">Panish Family Stadium</option>
-            <option value="marker-6">Bosco Quad</option>
-            <option value="marker-7">SJB Aquatics Pool</option>
-            <option value="marker-8">Intramural Field</option>
-            <option value="marker-9">Chapel</option>
-            <option value="marker-10">Entrance</option>
-            <option value="marker-11">Learning Commons</option>
-        </select>
-        <input type="text" id="event-name" placeholder="Enter event name">
-        <input type="number" id="event-hour" placeholder="HH" min="1" max="12">
-        <input type="number" id="event-minute" placeholder="MM" min="0" max="59">
-        <select id="event-period">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-        </select>
-        <button id="add-event-button">Add Event</button>
-    </div>
-
     <div class="map-container">
         <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg" alt="Campus Map">
-        <div class="marker" id="marker-1"></div>
-        <div class="marker" id="marker-2"></div>
-        <div class="marker" id="marker-3"></div>
-        <div class="marker" id="marker-4"></div>
-        <div class="marker" id="marker-5"></div>
-        <div class="marker" id="marker-6"></div>
-        <div class="marker" id="marker-7"></div>
-        <div class="marker" id="marker-8"></div>
-        <div class="marker" id="marker-9"></div>
-        <div class="marker" id="marker-10"></div>
-        <div class="marker" id="marker-11"></div>
+        <div class="marker" id="marker-1" data-url="https://www.howardcdm.com/wp-content/uploads/2020/09/IMG_5458-scaled.jpg"></div>
+        <div class="marker" id="marker-2" data-url="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1656441051/bosco/crparcmj0qrxs8sbr0vb/DSC09162-Edit.jpg"></div>
+        <div class="marker" id="marker-3" data-url="https://pbs.twimg.com/media/GO29Eyba4AEnP-B.jpg:large"></div>
+        <div class="marker" id="marker-4" data-url="https://thebravenews.press/wp-content/uploads/2021/09/img_3584.jpg"></div>
+        <div class="marker" id="marker-5" data-url="https://givebutter.com/cdn-cgi/image/width=1200/https://givebutter.s3.amazonaws.com/media/DEySm1VPVbYRhfNRN4SKHWRxmKSJ9JHt104Vqr10.jpeg"></div>
+        <div class="marker" id="marker-6" data-url="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1728059939/bosco/vb9uty8oyno2oeqq0n4f/DSC016111.jpg"></div>
+        <div class="marker" id="marker-7" data-url="https://asset.findingschool.com/attachments/SCH004176/300x300_5ad404baaba3c554998bed5a132333de.webp"></div>
+        <div class="marker" id="marker-8" data-url="https://www.bosco.org/uploaded/HIS_EDCUATION/admissions/DSC09170_(7).jpg"></div>
+        <div class="marker" id="marker-9" data-url="https://www.ocregister.com/wp-content/uploads/migration/mt2/mt2sga-b781175653z.120130913104635000gbd1ft76a.2.jpg?w=620"></div>
+        <div class="marker" id="marker-10" data-url="https://s.hdnux.com/photos/01/37/74/23/25150719/3/ratio3x2_1920.jpg"></div>
+        <div class="marker" id="marker-11" data-url="https://www.howardcdm.com/wp-content/uploads/2020/09/IMG_0951-scaled.jpg"></div>
     </div>
-    <div id="event-list">
-        <h2>Upcoming Events</h2>
-        <ul id="events"></ul>
-    </div>
-    <script>
-        //Your Javascript here.
-    </script>
-</body>
+    </body>
 </html>
