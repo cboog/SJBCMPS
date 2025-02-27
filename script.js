@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ... (Your existing fetchEvents and addEventButton code) ...
-
     function updateMarker(markerId, xPercent, yPercent, mapWidth, mapHeight) {
         const marker = document.getElementById(markerId);
         if (marker) {
@@ -28,6 +26,4 @@ document.addEventListener("DOMContentLoaded", () => {
         updateMarker("marker-10", 34, 76, mapWidth, mapHeight);
         updateMarker("marker-11", 12, 65, mapWidth, mapHeight);
     };
-
-    fetchEvents(); // Initial event list load
 });
