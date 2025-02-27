@@ -3,22 +3,32 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Prevent scrolling */
-}
-
-#map {
-    width: 100%;
-    height: 100vh; /* Full viewport height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
     background-color: #f0f0f0; /* Fallback in case image doesn't load */
 }
 
-form {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+/* Fix the map in place while allowing vertical scrolling */
+#map-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Keeps it in the background */
+}
+
+/* The Leaflet map element */
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Content section (scrollable) */
+#content {
+    position: relative;
+    z-index: 1;
     background: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 80%;
+    margin: auto;
 }
