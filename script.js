@@ -1,15 +1,17 @@
-// Initialize the map with a fixed image
+// Initialize the static map with a fixed image
 const map = L.map('map', {
-    crs: L.CRS.Simple, // Use a simple coordinate system for an image
+    crs: L.CRS.Simple, // Simple coordinate system for images
     zoomControl: false, // Disable zoom controls
-    dragging: false, // Prevent moving
+    dragging: false, // Prevent movement
     scrollWheelZoom: false, // Disable zooming with scroll
-    doubleClickZoom: false, // Disable double-click zooming
+    doubleClickZoom: false, // Disable double-click zoom
     touchZoom: false, // Disable pinch zoom
 });
 
-// Define the image bounds (adjust as needed)
-const bounds = [[0, 0], [1000, 1500]];
+// Define the image bounds – Adjust if needed
+const imageWidth = 2000; // Adjust based on the actual image
+const imageHeight = 1333; // Adjust based on the actual image
+const bounds = [[0, 0], [imageHeight, imageWidth]];
 
 // Add the campus map image as an overlay
 L.imageOverlay(
@@ -18,47 +20,3 @@ L.imageOverlay(
 ).addTo(map);
 
 map.fitBounds(bounds); // Center and scale the map
-
-// Fetch and display events
-async function fetchEvents() {
-    const response = await fetch("https://your-worker-subdomain.workers.dev/events"); // Replace with your Worker URL
-    const events = await response.json();
-
-    const eventList = document.getElementById("events");
-    eventList.innerHTML = ""; // Clear existing events
-
-    events.forEach(event => {
-        const { title, description, location, time } = event;
-        const [x, y] = location.split(',');
-
-        // Add marker
-        L.marker([x, y]).addTo(map)
-            .bindPopup(`<strong>${title}</strong><br>${description}<br><em>Time: ${time}</em>`);
-
-        // Add to event list
-        const li = document.createElement("li");
-        li.innerHTML = `<strong>${title}</strong> - ${time} @ ${location}`;
-        eventList.appendChild(li);
-    });
-}
-
-// Handle form submission
-document.getElementById("eventForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const title = document.getElementById("title").value;
-    const location = document.getElementById("location").value;
-    const time = document.getElementById("time").value;
-    const description = document.getElementById("description").value;
-
-    // Send data to Cloudflare Worker
-    await fetch("https://your-worker-subdomain.workers.dev/addevent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, description, location, time })
-    });
-
-    fetchEvents(); // Refresh event list
-});
-
-fetchEvents(); // Initial load
