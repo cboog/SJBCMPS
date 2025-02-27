@@ -14,16 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const mapWidth = mapImage.offsetWidth;
         const mapHeight = mapImage.offsetHeight;
 
+        // Place marker-1 at 34% x, 26% y
         updateMarker("marker-1", 34, 26, mapWidth, mapHeight);
-        updateMarker("marker-2", 57, 51, mapWidth, mapHeight);
-        updateMarker("marker-3", 80, 23, mapWidth, mapHeight);
-        updateMarker("marker-4", 57, 45, mapWidth, mapHeight);
-        updateMarker("marker-5", 80, 80, mapWidth, mapHeight);
-        updateMarker("marker-6", 34, 67, mapWidth, mapHeight);
-        updateMarker("marker-7", 54, 67, mapWidth, mapHeight);
-        updateMarker("marker-8", 34, 50, mapWidth, mapHeight);
-        updateMarker("marker-9", 45, 76, mapWidth, mapHeight);
-        updateMarker("marker-10", 34, 76, mapWidth, mapHeight);
-        updateMarker("marker-11", 12, 65, mapWidth, mapHeight);
     };
 });
