@@ -1,12 +1,15 @@
-// Initialize the map with St. John Bosco's campus dimensions
+// Initialize the map with a fixed image
 const map = L.map('map', {
     crs: L.CRS.Simple, // Use a simple coordinate system for an image
-    minZoom: -2, // Allows zooming out
-    maxZoom: 2, // Allows zooming in
+    zoomControl: false, // Disable zoom controls
+    dragging: false, // Prevent moving
+    scrollWheelZoom: false, // Disable zooming with scroll
+    doubleClickZoom: false, // Disable double-click zooming
+    touchZoom: false, // Disable pinch zoom
 });
 
-// Define the image bounds (adjust if needed to match real-world scale)
-const bounds = [[0, 0], [1000, 1500]]; // This defines the image size
+// Define the image bounds (adjust as needed)
+const bounds = [[0, 0], [1000, 1500]];
 
 // Add the campus map image as an overlay
 L.imageOverlay(
@@ -14,47 +17,48 @@ L.imageOverlay(
     bounds
 ).addTo(map);
 
-map.fitBounds(bounds); // Fit the image within the view
+map.fitBounds(bounds); // Center and scale the map
 
-// Function to fetch and display events from the Cloudflare Worker API
+// Fetch and display events
 async function fetchEvents() {
     const response = await fetch("https://your-worker-subdomain.workers.dev/events"); // Replace with your Worker URL
     const events = await response.json();
 
-    // Loop through the events and add markers to the map
+    const eventList = document.getElementById("events");
+    eventList.innerHTML = ""; // Clear existing events
+
     events.forEach(event => {
         const { title, description, location, time } = event;
-        const [x, y] = location.split(','); // Assuming location is comma-separated x,y
+        const [x, y] = location.split(',');
 
-        // Add marker to map
+        // Add marker
         L.marker([x, y]).addTo(map)
-            .bindPopup(`
-                <strong>${title}</strong><br>
-                ${description}<br>
-                <em>Time: ${time}</em>
-            `);
+            .bindPopup(`<strong>${title}</strong><br>${description}<br><em>Time: ${time}</em>`);
+
+        // Add to event list
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${title}</strong> - ${time} @ ${location}`;
+        eventList.appendChild(li);
     });
 }
 
-// Function to handle form submission (adding events to the database)
+// Handle form submission
 document.getElementById("eventForm").addEventListener("submit", async function (e) {
-    e.preventDefault(); // Prevent form submission from reloading the page
+    e.preventDefault();
 
     const title = document.getElementById("title").value;
-    const location = document.getElementById("location").value; // Should be x,y format
+    const location = document.getElementById("location").value;
     const time = document.getElementById("time").value;
     const description = document.getElementById("description").value;
 
-    // Send event data to Cloudflare Worker for saving in the database
-    await fetch("https://your-worker-subdomain.workers.dev/addevent", { // Replace with your Worker URL
+    // Send data to Cloudflare Worker
+    await fetch("https://your-worker-subdomain.workers.dev/addevent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, description, location, time })
     });
 
-    // Refresh the displayed events after adding a new one
-    fetchEvents();
+    fetchEvents(); // Refresh event list
 });
 
-// Initial fetch to load existing events from the database
-fetchEvents();
+fetchEvents(); // Initial load
