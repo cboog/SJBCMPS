@@ -4,45 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>St. John Bosco Campus Events</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        /* (Your combined CSS from the first code) */
+    </style>
 </head>
 <body>
+    <h1>St. John Bosco Campus Events</h1>
 
-    <!-- Fixed Map Container -->
-    <div id="map-container">
-        <div id="map"></div>
+    <div class="event-form">
+        <label for="event-location">Select Location:</label>
+        <select id="event-location">
+            <option value="marker-1">Track & Field</option>
+            <option value="marker-2">Thunderdome/SJB Gym</option>
+            <option value="marker-3">Baseball Field</option>
+            <option value="marker-4">Weight Room</option>
+            <option value="marker-5">Panish Family Stadium</option>
+            <option value="marker-6">Bosco Quad</option>
+            <option value="marker-7">SJB Aquatics Pool</option>
+            <option value="marker-8">Intramural Field</option>
+            <option value="marker-9">Chapel</option>
+            <option value="marker-10">Entrance</option>
+            <option value="marker-11">Learning Commons</option>
+        </select>
+        <input type="text" id="event-name" placeholder="Enter event name">
+        <input type="number" id="event-hour" placeholder="HH" min="1" max="12">
+        <input type="number" id="event-minute" placeholder="MM" min="0" max="59">
+        <select id="event-period">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+        </select>
+        <button id="add-event-button">Add Event</button>
     </div>
 
-    <!-- Scrollable Content Section -->
-    <div id="content">
-        <h1>Welcome to St. John Bosco Campus Events</h1>
-        <p>Find upcoming events and their locations on campus.</p>
-
-        <!-- Event Form -->
-        <form id="eventForm">
-            <label for="title">Event Title:</label>
-            <input type="text" id="title" required>
-            
-            <label for="location">Location (x,y):</label>
-            <input type="text" id="location" required>
-            
-            <label for="time">Time:</label>
-            <input type="text" id="time" required>
-            
-            <label for="description">Description:</label>
-            <textarea id="description" required></textarea>
-            
-            <button type="submit">Add Event</button>
-        </form>
-
-        <!-- Event List -->
-        <div id="event-list">
-            <h2>Upcoming Events</h2>
-            <ul id="events"></ul>
-        </div>
+    <div class="map-container">
+        <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg" alt="Campus Map">
+        <div class="marker" id="marker-1"> <img class="hover-image" src="https://www.howardcdm.com/wp-content/uploads/2020/09/IMG_5458-scaled.jpg" alt="Track & Field"> </div>
+        <div class="marker" id="marker-2"> <img class="hover-image" src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1656441051/bosco/crparcmj0qrxs8sbr0vb/DSC09162-Edit.jpg" alt="Thunderdome/SJB Gym"></div>
+        <div class="marker" id="marker-3"> <img class="hover-image" src="https://pbs.twimg.com/media/GO29Eyba4AEnP-B.jpg:large" alt="Baseball Field"></div>
+        <div class="marker" id="marker-4"> <img class="hover-image" src="https://thebravenews.press/wp-content/uploads/2021/09/img_3584.jpg" alt="Weight Room"></div>
+        <div class="marker" id="marker-5"> <img class="hover-image" src="https://givebutter.com/cdn-cgi/image/width=1200/https://givebutter.s3.amazonaws.com/media/DEySm1VPVbYRhfNRN4SKHWRxmKSJ9JHt104Vqr10.jpeg" alt="Panish Family Stadium"></div>
+        <div class="marker" id="marker-6"> <img class="hover-image" src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1728059939/bosco/vb9uty8oyno2oeqq0n4f/DSC016111.jpg" alt="Bosco Quad"></div>
+        <div class="marker" id="marker-7"> <img class="hover-image" src="https://asset.findingschool.com/attachments/SCH004176/300x300_5ad404baaba3c554998bed5a132333de.webp" alt="SJB Aquatics Pool"></div>
+        <div class="marker" id="marker-8"> <img class="hover-image" src="https://www.bosco.org/uploaded/HIS_EDCUATION/admissions/DSC09170_(7).jpg" alt="Intramural Field"></div>
+        <div class="marker" id="marker-9"> <img class="hover-image" src="https://www.ocregister.com/wp-content/uploads/migration/mt2/mt2sga-b781175653z.120130913104635000gbd1ft76a.2.jpg?w=620" alt="Chapel"></div>
+        <div class="marker" id="marker-10"> <img class="hover-image" src="https://s.hdnux.com/photos/01/37/74/23/25150719/3/ratio3x2_1920.jpg" alt="Entrance"></div>
+        <div class="marker" id="marker-11"> <img class="hover-image" src="https://www.howardcdm.com/wp-content/uploads/2020/09/IMG_0951-scaled.jpg" alt="Learning Commons"></div>
     </div>
-
-    <script src="script.js"></script>
+    <div id="event-list">
+        <h2>Upcoming Events</h2>
+        <ul id="events"></ul>
+    </div>
+    <script>
+        //Your Javascript here.
+    </script>
 </body>
 </html>
