@@ -17,4 +17,38 @@ document.addEventListener("DOMContentLoaded", () => {
         // Place marker-1 at 34% x, 26% y
         updateMarker("marker-1", 34, 26, mapWidth, mapHeight);
     };
+
+    const addEventButton = document.getElementById("addEventButton");
+    const eventForm = document.getElementById("event-form");
+    const createEventButton = document.getElementById("createEvent");
+
+    addEventButton.addEventListener("click", () => {
+        eventForm.style.display = "block";
+    });
+
+    createEventButton.addEventListener("click", () => {
+        const eventName = document.getElementById("eventName").value;
+        const eventTime = document.getElementById("eventTime").value;
+        const eventLocation = document.getElementById("eventLocation").value;
+
+        // Get the marker's position
+        const marker = document.getElementById(eventLocation);
+        const markerLeft = marker.style.left;
+        const markerTop = marker.style.top;
+
+        // Create a new event marker (or display event info)
+        createNewEventMarker(markerLeft, markerTop, eventName, eventTime);
+
+        // Hide the form
+        eventForm.style.display = "none";
+    });
+
+    function createNewEventMarker(left, top, name, time) {
+        const eventMarker = document.createElement("div");
+        eventMarker.className = "event-marker";
+        eventMarker.style.left = left;
+        eventMarker.style.top = top;
+        eventMarker.innerHTML = `<span class="event-info">${name}<br>${time}</span>`;
+        document.querySelector(".map-container").appendChild(eventMarker);
+    }
 });
