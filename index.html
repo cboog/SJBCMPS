@@ -12,22 +12,32 @@
         <div class="marker" id="marker-1"></div>
     </div>
 
-    <div id="event-form" style="display: none;">
-        <input type="text" id="eventName" placeholder="Event Name">
-        <select id="eventTime">
-            <option value="9:00 AM">9:00 AM</option>
-            <option value="10:00 AM">10:00 AM</option>
-            <option value="11:00 AM">11:00 AM</option>
-            <option value="12:00 PM">12:00 PM</option>
-            <option value="1:00 PM">1:00 PM</option>
-            <option value="2:00 PM">2:00 PM</option>
-            <option value="3:00 PM">3:00 PM</option>
-        </select>
-        <select id="eventLocation">
-            <option value="marker-1">Marker 1</option>
-        </select>
-        <button id="createEvent">Create Event</button>
+   <div id="event-form" style="display: none;">
+    <input type="text" id="eventName" placeholder="Event Name">
+
+    <div class="time-input">
+        <label for="eventHours">Hours:</label>
+        <input type="number" id="eventHours" min="1" max="12" value="1">
+        <div class="arrow-controls">
+            <button class="arrow-up" data-target="eventHours">&#9650;</button>
+            <button class="arrow-down" data-target="eventHours">&#9660;</button>
+        </div>
     </div>
+
+    <div class="time-input">
+        <label for="eventMinutes">Minutes:</label>
+        <input type="number" id="eventMinutes" min="0" max="59" value="0">
+        <div class="arrow-controls">
+            <button class="arrow-up" data-target="eventMinutes">&#9650;</button>
+            <button class="arrow-down" data-target="eventMinutes">&#9660;</button>
+        </div>
+    </div>
+
+    <select id="eventLocation">
+        <option value="marker-1">Marker 1</option>
+    </select>
+    <button id="createEvent">Create Event</button>
+</div>
     <button id="addEventButton">Add Event</button>
     <script src="script.js"></script>
 </body>
