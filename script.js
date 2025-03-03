@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const mapHeight = mapImage.offsetHeight;
 
         // Place marker-1 at 34% x, 26% y
-        updateMarker("marker-1", 34, 26, mapWidth, mapHeight);
+        updateMarker("marker-1", 50, 50, mapWidth, mapHeight);
     };
 
     const addEventButton = document.getElementById("addEventButton");
