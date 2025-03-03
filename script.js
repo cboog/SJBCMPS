@@ -35,10 +35,35 @@ document.addEventListener("DOMContentLoaded", () => {
         eventForm.style.display = "block";
     });
 
+    // Arrow button functionality
+    document.querySelectorAll(".arrow-up, .arrow-down").forEach(button => {
+        button.addEventListener("click", () => {
+            const targetId = button.dataset.target;
+            const input = document.getElementById(targetId);
+            let value = parseInt(input.value);
+            const min = parseInt(input.min);
+            const max = parseInt(input.max);
+
+            if (button.classList.contains("arrow-up")) {
+                value++;
+                if (value > max) value = min;
+            } else {
+                value--;
+                if (value < min) value = max;
+            }
+
+            input.value = value;
+        });
+    });
+
     createEventButton.addEventListener("click", () => {
         const eventName = document.getElementById("eventName").value;
-        const eventTime = document.getElementById("eventTime").value;
+        const eventHours = document.getElementById("eventHours").value;
+        const eventMinutes = document.getElementById("eventMinutes").value;
         const eventLocation = document.getElementById("eventLocation").value;
+
+        // Combine hours and minutes into a time string
+        const eventTime = `${eventHours}:${eventMinutes}`;
 
         // Get the marker's position
         const marker = document.getElementById(eventLocation);
