@@ -10,13 +10,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const mapImage = document.querySelector(".map-container img");
-    mapImage.onload = function() {
-        const mapWidth = mapImage.offsetWidth;
-        const mapHeight = mapImage.offsetHeight;
 
-        // Place marker-1 at 34% x, 26% y
-        updateMarker("marker-1", 50, 50, mapWidth, mapHeight);
-    };
+    function placeInitialMarker() {
+        if (mapImage.complete) { // Check if image is already loaded
+            const mapWidth = mapImage.offsetWidth;
+            const mapHeight = mapImage.offsetHeight;
+            updateMarker("marker-1", 34, 26, mapWidth, mapHeight);
+        } else {
+            mapImage.onload = function() {
+                const mapWidth = mapImage.offsetWidth;
+                const mapHeight = mapImage.offsetHeight;
+                updateMarker("marker-1", 34, 26, mapWidth, mapHeight);
+            };
+        }
+    }
+
+    placeInitialMarker(); // Call the function to place the marker
 
     const addEventButton = document.getElementById("addEventButton");
     const eventForm = document.getElementById("event-form");
