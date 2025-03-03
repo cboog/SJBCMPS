@@ -52,3 +52,20 @@ body {
 .event-marker:hover .event-info {
     display: block;
 }
+.time-input {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.arrow-controls {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.arrow-controls button {
+    padding: 2px 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
