@@ -26,3 +26,29 @@ body {
     transform: translate(-50%, -50%);
     visibility: visible;
 }
+
+.event-marker {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border: 1px solid white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.event-info {
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    top: 20px;
+    left: 20px;
+    display: none;
+}
+
+.event-marker:hover .event-info {
+    display: block;
+}
