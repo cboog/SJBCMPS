@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,24 @@
         <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg" alt="Campus Map">
         <div class="marker" id="marker-1"></div>
     </div>
+
+    <div id="event-form" style="display: none;">
+        <input type="text" id="eventName" placeholder="Event Name">
+        <select id="eventTime">
+            <option value="9:00 AM">9:00 AM</option>
+            <option value="10:00 AM">10:00 AM</option>
+            <option value="11:00 AM">11:00 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="1:00 PM">1:00 PM</option>
+            <option value="2:00 PM">2:00 PM</option>
+            <option value="3:00 PM">3:00 PM</option>
+        </select>
+        <select id="eventLocation">
+            <option value="marker-1">Marker 1</option>
+        </select>
+        <button id="createEvent">Create Event</button>
+    </div>
+    <button id="addEventButton">Add Event</button>
     <script src="script.js"></script>
 </body>
 </html>
